@@ -8,11 +8,11 @@ export const ProductItem = ({ product, className, onAdd }) => {
     onAdd(product);
   };
   return (
-    <div className={'product' + className}>
-      <div className='img' />
-      <div className='title'>{product.title}</div>
-      <div className='description'>{product.description}</div>
-      <div className='price'>
+    <div className={'product ' + className}>
+      <div className={'img'} />
+      <div className={'title'}>{product.title}</div>
+      <div className={'description'}>{product.description}</div>
+      <div className={'price'}>
         <span>
           Стоимость: <b>{product.price}</b>
         </span>
@@ -20,7 +20,7 @@ export const ProductItem = ({ product, className, onAdd }) => {
       <Button
         className={'add-btn'}
         onClick={onAddHandler}>
-        Добавить в карзину
+        Добавить в корзину
       </Button>
     </div>
   );
