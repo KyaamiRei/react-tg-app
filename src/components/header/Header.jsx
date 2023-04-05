@@ -1,12 +1,13 @@
 import React from 'react';
 
-import { Button } from '../Button/button';
+import { Button } from '../Button/Button';
 
-import 'header.css';
 import { useTelegram } from '../../hooks/useTelegram';
 
+import './Header.css';
+
 export const Header = () => {
-  const {user, onClose } = useTelegram();
+  const { user, onClose } = useTelegram();
 
   return (
     <div className={'header'}>

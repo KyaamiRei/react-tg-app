@@ -1,18 +1,20 @@
 import React, { useEffect } from 'react';
 
-import './App.css';
 import { useTelegram } from './hooks/useTelegram';
+
+import './App.css';
+import { Header } from './components/Header/Header';
 
 function App() {
   const { tg, onTogleButton } = useTelegram();
 
   useEffect(() => {
     tg.ready();
-  }, []);
+  }, [tg]);
 
   return (
     <div className='App'>
-      сайт
+      <Header />
       <button onClick={onTogleButton}>togle</button>
     </div>
   );
