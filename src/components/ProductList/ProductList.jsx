@@ -16,9 +16,8 @@ const products = [
 ];
 
 export const ProductList = () => {
+  const [addedItems, setAddedItems] = useState([]);
   const { tg } = useTelegram();
-
-  const [addedItem, setAddedItem] = useState([]);
 
   const getTotalPrice = (items = []) => {
     return items.reduce((acc, item) => {
@@ -27,22 +26,23 @@ export const ProductList = () => {
   };
 
   const onAdd = (product) => {
-    const alreadyAdded = addedItem.fill((item) => item.id === product.id);
-    let newItem = [];
+    const alreadyAdded = addedItems.find((item) => item.id === product.id);
+    let newItems = [];
 
     if (alreadyAdded) {
-      newItem = addedItem.filter((item) => item.id !== product.id);
+      newItems = addedItems.filter((item) => item.id !== product.id);
     } else {
-      newItem = [...newItem, product];
+      newItems = [...addedItems, product];
     }
 
-    setAddedItem(newItem);
-    if (addedItem.length === 0) {
+    setAddedItems(newItems);
+
+    if (newItems.length === 0) {
       tg.MainButton.hide();
     } else {
       tg.MainButton.show();
       tg.MainButton.setParams({
-        text: `Купить ${getTotalPrice(newItem)}`,
+        text: `Купить ${getTotalPrice(newItems)}`,
       });
     }
   };
